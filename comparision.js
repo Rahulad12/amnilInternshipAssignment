@@ -19,9 +19,6 @@
  *  - '>'
  *  - '<='
  *  - '>='
- *
- * @throws {Error} If the operator is not one of the
- *    valid comparison operators.
  */
 function comparisionOperator(token_1, token_2) {
   console.log("Strictly Equal To", token_1 === token_2);
