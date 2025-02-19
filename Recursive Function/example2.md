@@ -114,17 +114,3 @@ The 80 is Found at index 1
 ### ❌ Disadvantages:
 - Inefficient for large datasets compared to binary search (`O(n)` vs. `O(log n)`).
 - Uses additional space due to recursion.
-
-## How to Run
-1. Copy and paste the code into a JavaScript file (e.g., `linearSearch.js`).
-2. Run the file using Node.js:
-   ```bash
-   node linearSearch.js
-   ```
-3. Check the console output for results.
-
-## Contribution
-Feel free to modify and optimize the code. Pull requests are welcome!
-
-## License
-This project is licensed under the MIT License.
