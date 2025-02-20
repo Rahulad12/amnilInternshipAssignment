@@ -29,7 +29,6 @@ const Student = {
   },
 };
 //accessing object properties
-console.log("**************Accessing Object*************");
 console.log(Student);
 
 // Accessing using Dot Notation"
