@@ -1,0 +1,113 @@
+.navbar {
+  /* border: 2px solid red; */
+}
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.nav-link {
+  list-style: none;
+  margin-right: 5px;
+}
+.nav-link a {
+  text-decoration: none;
+  color: grey;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#employee-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Space between items */
+  justify-content: center;
+  padding: 20px;
+}
+.emp-head {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 4px;
+}
+.emp-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: calc(33% - 16px); /* Adjust width to fit 3 items per row */
+  max-width: 350px; /* Limit the width */
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.emp-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.emp-card-content {
+  padding: 20px;
+}
+
+.card-head {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.emp-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.emp-position {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 5px 0 15px;
+}
+
+.card-body {
+  font-size: 1rem;
+  color: #444;
+}
+
+.card-body p {
+  margin: 8px 0;
+}
+
+.card-body strong {
+  color: #000;
+}
+
+/* stas  */
+#stas-container {
+  /* border: 2px solid red; */
+  background-color: rgb(240, 238, 229);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+#stas-container .stats-content p {
+  font-size: 2rem;
+  color: rgb(129, 123, 116);
+}
+#stas-container .stats-content p strong {
+  color: rgb(109, 150, 164);
+  font-weight: 400;
+  font-size: 4rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+th {
+  background-color: #f4f4f4;
+}
