@@ -1,7 +1,7 @@
 // Fetching employee data
 const FetchEmployeeData = async () => {
   try {
-    const response = await fetch("./employee.json");
+    const response = await fetch("../data/employee.json");
     return await response.json();
   } catch (error) {
     console.error(`Error fetching employee data: ${error}`);

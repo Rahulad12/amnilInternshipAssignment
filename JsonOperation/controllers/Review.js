@@ -1,7 +1,7 @@
 // Fetching reviews data from the review API
 const fetchReviews = async () => {
   try {
-    const response = await fetch("./review.json");
+    const response = await fetch("../data/review.json");
     return await response.json();
   } catch (error) {
     console.log(`Error Fetching reviews: ${error}`);
