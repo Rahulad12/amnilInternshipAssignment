@@ -111,3 +111,62 @@ td {
 th {
   background-color: #f4f4f4;
 }
+
+/* Review Container */
+#emp-review-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Review Card */
+.review-card {
+  width: 300px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Card Header */
+.review-card-head {
+  background-color: #7775a2;
+  color: white;
+  padding: 16px;
+  text-align: center;
+}
+
+.reviewer-name {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.emp-position {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  color: rgb(210, 201, 191);
+}
+
+/* Card Body */
+.review-card-body {
+  padding: 16px;
+}
+
+.review-card-body p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+}
+
+.review-text {
+  font-style: italic;
+  color: #555;
+  margin-top: 10px;
+}
