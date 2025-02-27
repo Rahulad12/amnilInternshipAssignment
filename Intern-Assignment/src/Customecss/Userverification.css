@@ -1,0 +1,179 @@
+/* General layout setup */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  /* border: 2px solid rgb(17, 16, 1); */
+}
+
+.userverify-container {
+  /* border: 2px solid blue; */
+  padding: 20px;
+  max-width: 519px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+.text-head {
+  /* border: 2px solid green; */
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.text-muted {
+  color: #646464;
+}
+
+.logo-section {
+  /* border: 2px solid red; */
+  position: relative;
+  right: 174px;
+  top: 0;
+}
+
+.logo-text {
+  color: #e50000;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.code-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 48px;
+}
+
+.code-box {
+  margin-left: 8px;
+  border-radius: 5px;
+  width: 50px;
+  height: 52px;
+  border: 1px solid #ced4da;
+  text-align: center;
+  font-size: 18px;
+}
+
+.code-box:hover {
+  transition: ease-in 0.5s;
+  border-color: #e50000;
+}
+
+.verify-button {
+  display: block;
+  width: 100%;
+  margin-top: 24px;
+  height: 48px;
+  background-color: #e50000;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  opacity: 80%;
+}
+
+.verify-button:hover {
+  transition: ease-in 0.5s;
+  background-color: rgb(71, 69, 69);
+}
+
+.timer {
+  margin-top: 12px;
+  color: #646464;
+  text-align: left;
+}
+
+.resend-button {
+  cursor: pointer;
+}
+
+.userverify-footer {
+  /* border: 2px solid green; */
+  position: relative;
+  bottom: 0;
+  top: 112px;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .content {
+    padding: 16px; /* Reduce padding for medium screens */
+    max-width: 400px; /* Adjust max-width for medium screens */
+  }
+
+  .text-head {
+    font-size: 28px; /* Reduce font size for headings */
+    line-height: 36px;
+  }
+
+  .logo-section {
+    /* border: 2px solid red; */
+    position: relative;
+    right: 130px;
+    top: 0;
+  }
+
+  .logo-text {
+    font-size: 24px; /* Smaller font size for logo */
+  }
+
+  .code-box {
+    width: 45px; /* Adjust width for medium screens */
+    height: 48px; /* Adjust height for medium screens */
+    font-size: 16px; /* Reduce font size */
+  }
+
+  .verify-button {
+    height: 40px; /* Reduce button height */
+    border-radius: 8px; /* Adjust border radius */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .content {
+    padding: 12px; /* Further reduce padding for small screens */
+    max-width: 100%; /* Use full width */
+  }
+
+  .text-head {
+    font-size: 24px; /* Smaller heading font size */
+    line-height: 32px;
+  }
+
+  .logo-text {
+    font-size: 20px; /* Adjust logo text size */
+  }
+
+  .code-container {
+    flex-wrap: wrap; /* Allow wrapping for small screens */
+    justify-content: center; /* Center-align the code boxes */
+    gap: 8px; /* Add spacing between rows if wrapped */
+  }
+
+  .code-box {
+    width: 40px; /* Smaller code boxes */
+    height: 44px;
+    font-size: 14px;
+  }
+
+  .verify-button {
+    height: 36px; /* Smaller button height */
+    font-size: 14px; /* Smaller button text */
+  }
+
+  .timer {
+    font-size: 12px; /* Smaller timer text */
+  }
+
+  .userverify-footer {
+    font-size: 12px; /* Adjust footer text size */
+  }
+}

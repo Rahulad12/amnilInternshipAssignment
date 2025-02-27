@@ -1,0 +1,105 @@
+/* Bar container and overall layout */
+.bar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  max-width: 970px;
+  max-height: 66px;
+  width: 100%;
+  height: 100%;
+}
+
+/* Steps alignment and layout */
+.bar-container .steps {
+  position: relative;
+  left: 27px;
+  top: 24px;
+}
+
+/* Circle styling */
+.steps .circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 14px;
+  width: 14px;
+  padding: 2px 4px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50%;
+  border: 3px solid;
+  transition: all 0.3s ease;
+}
+
+/* Completed step */
+.steps .circle.bg-green-500 {
+  background-color: #34c759;
+  color: white;
+  border-color: #34c759;
+}
+
+/* Current step */
+.steps .circle.bg-white {
+  background-color: white;
+  color: #34c759;
+  border-color: #34c759;
+}
+
+/* Incomplete step */
+.steps .circle.bg-gray-400 {
+  background-color: white;
+  color: #9e9e9e;
+  border-color: #e0e0e0;
+}
+
+/* Step title text */
+.step-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-weight: 800;
+  font-size: 14px;
+  width: 79px;
+  text-align: center;
+  line-height: 20px;
+  transition: all 0.3s ease;
+}
+
+/* Step title colors based on step status */
+.step-title.text-black {
+  color: #636567;
+  font-weight: bold;
+}
+
+.step-title.text-gray-700 {
+  color: #616161;
+}
+
+.step-title.text-gray-400 {
+  color: #9e9e9e;
+}
+
+/* Progress bar styling */
+.progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 830px;
+  width: 100%;
+  height: 4px;
+  background-color: #e0e0e0;
+  position: absolute;
+}
+
+/* Progress bar fill */
+.progress-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #34c759;
+  transition: width 0.3s ease-in-out;
+}

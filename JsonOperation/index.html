@@ -9,29 +9,33 @@
   <body>
     <header>
       <div class="navbar">
-        <ul class="nav">
-          <li class="nav-link">
-            <a href="#about">About</a>
-            <a href="./view/Employee.html">All Employee</a>
-          </li>
-        </ul>
+        <nav>
+          <ul class="nav">
+            <li class="nav-link">
+              <a href="#about">About</a>
+              <a href="./view/Employee.html">All Employee</a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </header>
-    <section>
-      <h1 class="emp-head">Recent Joining</h1>
-      <div id="employee-container"></div>
-    </section>
-    <section class="stas">
-      <div id="stas-container"></div>
-    </section>
-    <section class="allemp-table">
-      <div id="all-employee-container"></div>
-    </section>
+    <main>
+      <section>
+        <h1 class="emp-head">Recent Joining</h1>
+        <div id="employee-container"></div>
+      </section>
+      <section class="stas">
+        <div id="stas-container"></div>
+      </section>
+      <section class="allemp-table">
+        <div id="all-employee-container"></div>
+      </section>
+      <section>
+        <h1 class="emp-head">Employee Review</h1>
+        <div id="emp-review-container"></div>
+      </section>
+    </main>
 
-    <section>
-      <h1 class="emp-head">Employee Review</h1>
-      <div id="emp-review-container"></div>
-    </section>
     <script src="./controllers/Employee.js"></script>
     <script src="./controllers/Review.js"></script>
   </body>

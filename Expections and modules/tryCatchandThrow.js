@@ -47,7 +47,7 @@ const FetchData = (req, res) => {
 
 // Example usage:
 const mockReq = {
-  body: { email: "adhikarirahul2014@gmail.com", password: "wrongpassword" },
+  body: { email: "adhikarirahul2014@gmail.com", password: "rahuladhikari" },
 };
 const mockRes = {
   status: (code) => ({
