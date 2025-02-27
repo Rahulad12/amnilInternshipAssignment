@@ -1,5 +1,14 @@
 // Fetching employee data
 import { fetchEmployees } from "../../../JsonOperation/js/api/apiService.js";
+/**
+ * @description
+ * Displays the most recent employees and total employee statistics.
+ * Fetches employee data from the API, sorts it by the most recent joining date,
+ * and generates HTML elements to display employee cards for the top 5 recent joiners.
+ * Additionally, updates the statistics container with the total number of employees.
+ * Assumes that the HTML contains containers with IDs "employee-container" and "stas-container".
+ */
+
 export const Employee = () => {
   fetchEmployees().then((data) => {
     // Sorting the employee data by 'dateOfJoining'
@@ -45,6 +54,12 @@ export const Employee = () => {
   });
 };
 
+/**
+ * @description
+ * This function fetches all employees data from the JSON file and renders it in a table
+ * It also calculates the total salary of all employees and displays it below the table
+ * @returns {void}
+ */
 export const allEmployees = () => {
   fetchEmployees().then((data) => {
     // Returning all employees in a table

@@ -1,5 +1,13 @@
 // Fetching reviews data from the review API
 import { fetchReviews } from "../../../JsonOperation/js/api/apiService.js";
+/**
+ * Fetches and displays employee reviews in the specified container.
+ * Retrieves reviews from the review API and sorts them by the most recent date.
+ * Generates and appends review cards to the HTML element with the ID "emp-review-container".
+ * Each card includes the employee's name, position, reviewer's name, star rating,
+ * review date, and the review text.
+ * Logs an error if the review container element is not found.
+ */
 export const Review = () => {
   fetchReviews().then((data) => {
     const reviewContainer = document.getElementById("emp-review-container");

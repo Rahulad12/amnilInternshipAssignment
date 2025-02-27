@@ -4,6 +4,11 @@ const employeesUrl = "../../../JsonOperation/js/data/employee.json";
 const reviewsUrl = "../../../JsonOperation/js/data/review.json";
 
 //api calling function
+
+/**
+ * Fetches all employees from the database and returns them in an array
+ * @returns {Promise <Array<Object>>} An array of employee objects
+ */
 export const fetchEmployees = async () => {
   try {
     const response = await fetch(employeesUrl);
@@ -16,6 +21,10 @@ export const fetchEmployees = async () => {
   }
 };
 
+/**
+ * Fetches all reviews from the database and returns them in an array
+ * @returns {Promise <Array<Object>>} An array of review objects
+ */
 export const fetchReviews = async () => {
   try {
     const response = await fetch(reviewsUrl);
