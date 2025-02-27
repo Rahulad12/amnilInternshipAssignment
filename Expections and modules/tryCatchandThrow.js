@@ -1,11 +1,6 @@
 /**
  * The try, catch and finally blocks are used to handle exceptions (a type of an error). Before you learn about them, you need to know about the types of errors in programming.
  */
-
-const body = {
-  email: "adhikarirahul2014@gmail.com",
-  password: "rahuladhikari",
-};
 const database = [
   {
     email: "rahuladhikari2014@gmail.com",
