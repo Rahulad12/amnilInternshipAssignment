@@ -13,41 +13,41 @@ const database = [
     name: "Adhikari Rahul",
   },
 ];
-const FetchData = async (req, res) => {
-  const { email, password } = body;
+
+const FetchData = (req, res) => {
+  const { email, password } = req.body;
+
   try {
-    const user = await database.find((user) => user.email === email);
+    // Find the user in the database
+    const user = database.find((user) => user.email === email);
+
     if (!user) {
-      throw new Error(`User not found with email: ${email}`); //illustrating the throw keyword here
+      throw new Error(`User not found with email: ${email}`);
     }
-    const isMatch = user.password === password;
-    if (isMatch) {
-      res.status(200).json({
-        success: true,
-        message: "User Logged In Sucessfully",
-        user: {
-          name: user.name,
-          email: user.email,
-        },
-      });
-    } else {
-      res.status(400).json({
-        success: false,
-        message: "Invalid Credentails",
-      });
+
+    // Check if the password matches
+    if (user.password !== password) {
+      throw new Error("Invalid Credentials");
     }
+
+    res.status(200).json({
+      success: true,
+      message: "User Logged In Successfully",
+      user: { name: user.name, email: user.email },
+    });
   } catch (error) {
-    res.status(500).json({
+    res.status(400).json({
       success: false,
-      message: `Internal Server Error ${error}`,
+      message: error.message, // Custom error messages from `throw`
     });
   } finally {
     console.log(`Request processed for email: ${email}`);
   }
 };
 
+// Example usage:
 const mockReq = {
-  body: { email: "adhikarirahul2014@gmail.com", password: "rahuladhikari" },
+  body: { email: "adhikarirahul2014@gmail.com", password: "wrongpassword" },
 };
 const mockRes = {
   status: (code) => ({
