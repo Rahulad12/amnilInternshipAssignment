@@ -1,4 +1,5 @@
 // Fetching employee data
+//TODO: use same this for employee.html file also
 import { fetchEmployees } from "../../../JsonOperation/js/api/apiService.js";
 /**
  * @description
@@ -20,37 +21,41 @@ export const Employee = () => {
     const employeeContainer = document.getElementById("employee-container");
 
     // Mapping through the sorted data to generate HTML
-    recentJoined?.slice(1, 6).map((emp, index) => {
-      const employeeDiv = document.createElement("div");
-      employeeDiv.classList.add("emp-card");
+    if (employeeContainer) {
+      recentJoined?.slice(1, 6).map((emp, index) => {
+        const employeeDiv = document.createElement("div");
+        employeeDiv.classList.add("emp-card");
 
-      employeeDiv.innerHTML = `
-        <div class="emp-card-content">
-          <div class="card-head">
-            <h2 class="emp-name">${emp.name}</h2>
-            <p class="emp-position">${emp.position}</p>
+        employeeDiv.innerHTML = `
+          <div class="emp-card-content">
+            <div class="card-head">
+              <h2 class="emp-name">${emp.name}</h2>
+              <p class="emp-position">${emp.position}</p>
+            </div>
+            <div class="card-body">
+              <p><strong>Employee ID:</strong> ${emp.employeeId}</p>
+              <p><strong>Salary:</strong> $${emp.salary.toLocaleString()}</p>
+              <p><strong>Date of Joining:</strong> ${new Date(
+                emp.dateOfJoining
+              ).toLocaleDateString()}</p>
+            </div>
           </div>
-          <div class="card-body">
-            <p><strong>Employee ID:</strong> ${emp.employeeId}</p>
-            <p><strong>Salary:</strong> $${emp.salary.toLocaleString()}</p>
-            <p><strong>Date of Joining:</strong> ${new Date(
-              emp.dateOfJoining
-            ).toLocaleDateString()}</p>
-          </div>
-        </div>
-      `;
-      employeeContainer.appendChild(employeeDiv);
-    });
+        `;
+        employeeContainer.appendChild(employeeDiv);
+      });
+    }
 
     // Getting value of total employees
     const totalEmployee = data?.length;
 
     const stasContainer = document.getElementById("stas-container");
-    stasContainer.innerHTML = `
+    if (stasContainer) {
+      stasContainer.innerHTML = `
       <div class="stats-content">
         <p>We have <strong>${totalEmployee}</strong> Employees in the company</p>
       </div>
     `;
+    }
 
     // Returning all employees in a table
     const allEmployeeContainer = document.getElementById(
@@ -101,7 +106,6 @@ export const Employee = () => {
     totlal_salary_container.innerHTML = `
     <p> Total Salary Given to employee is <strong>$${totalSalary}</strong></p>
   `;
-  
   });
 };
 
