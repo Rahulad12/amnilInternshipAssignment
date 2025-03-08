@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "rahul@gmail.com",
+      "password": "rahul123"
+    },
+    {
+      "id": "eaf1",
+      "email": "st.rahul07@gmail.com",
+      "password": "123"
+    }
+  ],
+  "employees": [
+    {
+      "id": "1",
+      "name": "Rahul Adhikari",
+      "position": "Backend Developer",
+      "department": "IT",
+      "salary": "50000",
+      "joiningDate": "2022-01-01",
+      "userID": "eaf1"
+    }
+  ]
+}

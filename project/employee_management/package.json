@@ -1,0 +1,21 @@
+{
+  "name": "employee_management",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "server": "json-server --watch config/db.json --port 5000",
+    "start": "concurrently \"npm run server\" \"npm run dev\"",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  },
+  "dependencies": {
+    "concurrently": "^9.1.2",
+    "dotenv": "^16.4.7",
+    "json-server": "^1.0.0-beta.3"
+  }
+}
