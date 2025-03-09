@@ -1,4 +1,4 @@
-import { loginUserApi } from "../apiService/userApi.js";
+import { loginUserApi } from "../api/userApi.js";
 import { createForm } from "../component/Form.js";
 
 // Redirect logged-in user to dashboard
@@ -39,9 +39,11 @@ export const userLogin = () => {
       console.error("Error logging in:", error);
       alert("Login Failed. Please try again");
     } finally {
+      emailInput.value = "";
+      passwordInput.value = "";
       submitButton.disabled = false;
       submitButton.innerText = "Login"; // Reset button text
     }
   });
 };
-userLogin(); 
+userLogin();

@@ -1,12 +1,17 @@
-import { responseMessage } from "../component/responseMessage.js";
-import { AUTH_URL } from "../constant.js";
-export const regiserUser = async (email, password) => {
-  const bodyData = {
-    email,
-    password,
-  };
+import { responseMessage } from "../utils/ResponseMessage";
+
+export const regiserUser = async (url, email, password) => {
+  if (!email || !password) {
+    return responseMessage(false, "Please enter both email and password");
+  }
+
   try {
-    const userResponse = await fetch(`${AUTH_URL}`);
+    const bodyData = {
+      email,
+      password,
+    };
+
+    const userResponse = await fetch(url);
     const user = await userResponse.json();
 
     //check if user already exist
@@ -16,7 +21,7 @@ export const regiserUser = async (email, password) => {
     }
 
     //register new user
-    const response = await fetch(`${AUTH_URL}`, {
+    const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,15 +30,23 @@ export const regiserUser = async (email, password) => {
     });
 
     const result = await response.json();
-    return response.ok ? result : responseMessage(false, result.message);
+    return response.ok
+      ? responseMessage(true, {
+          user: result.id,
+          message: "Register Successfull",
+        })
+      : responseMessage(false, result.message);
   } catch (error) {
     return responseMessage(false, error.message);
   }
 };
 
-export const loginUser = async (email, password) => {
+export const loginUser = async (url, email, password) => {
+  if (!email || !password) {
+    return responseMessage(false, "Please enter both email and password");
+  }
   try {
-    const userResponse = await fetch(`${AUTH_URL}`);
+    const userResponse = await fetch(url);
     const user = await userResponse.json();
 
     //check if user exist
@@ -54,7 +67,6 @@ export const loginUser = async (email, password) => {
       user: userExsit.id,
       message: "Login Successfull",
     });
-    
   } catch (error) {
     return responseMessage(false, error.message);
   }

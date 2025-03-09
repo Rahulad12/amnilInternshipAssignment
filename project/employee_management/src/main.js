@@ -1,6 +1,7 @@
 import "./css/style.css";
 
-if(localStorage.getItem("token")) window.location.href = "./src/screen/employeeDashboard.html";
+if (localStorage.getItem("token"))
+  window.location.href = "./src/screen/employeeDashboard.html";
 
 document.getElementById("app").innerHTML = `
      <div class="container">

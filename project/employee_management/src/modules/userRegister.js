@@ -1,5 +1,9 @@
-import { registerUserApi } from "../apiService/userApi.js";
+import { registerUserApi } from "../api/userApi.js";
 import { createForm } from "../component/Form.js";
+
+//if we have token redirect to dashboard
+if(localStorage.getItem("token")){window.location.href = "/src/screen/employeeDashboard.html";}
+
 
 export const userRegister = () => {
   const { userAuthForm, emailInput, passwordInput, submitButton } =
@@ -23,8 +27,9 @@ export const userRegister = () => {
       const response = await registerUserApi(email, password);
       console.log(response);
       if (response.success) {
-        alert(`${response?.message}` || "Register successfull");
-        localStorage.setItem("token", response?.user);
+        alert(response.message?.message);
+        localStorage.setItem("token", response?.message.user);
+        window.location.href = "/src/screen/employeeDashboard.html";
       } else {
         alert(response.message);
       }
@@ -32,6 +37,8 @@ export const userRegister = () => {
       console.error("Error login in", error);
       alert("Register Failed. please try again");
     } finally {
+      emailInput.value = "";
+      passwordInput.value = "";
       submitButton.disabled = false;
       submitButton.innerText = "Register";
     }
