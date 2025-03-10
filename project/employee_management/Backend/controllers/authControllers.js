@@ -1,72 +1,67 @@
-import { responseMessage } from "../utils/ResponseMessage";
+import { responseMessage } from "../utils/ResponseMessage.js";
 
-export const regiserUser = async (url, email, password) => {
+/**
+ * Register a new user
+ * @param {string} url - The database URL
+ * @param {string} email - The user's email
+ * @param {string} password - The user's password
+ * @returns {Promise<{success: boolean, message: string, user?: string}>}
+ */
+export const registerUser = async (url, email, password) => {
   if (!email || !password) {
     return responseMessage(false, "Please enter both email and password");
   }
 
   try {
-    const bodyData = {
-      email,
-      password,
-    };
+    const response = await fetch(url);
+    const users = await response.json();
 
-    const userResponse = await fetch(url);
-    const user = await userResponse.json();
-
-    //check if user already exist
-    const existUser = user.find((u) => u.email === email);
-    if (existUser) {
-      return responseMessage(false, "User already exist");
+    if (users.some((user) => user.email === email)) {
+      return responseMessage(false, "User already exists");
     }
 
-    //register new user
-    const response = await fetch(url, {
+    const newUser = { email, password };
+    const registerResponse = await fetch(url, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(bodyData),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newUser),
     });
 
-    const result = await response.json();
-    return response.ok
-      ? responseMessage(true, {
-          user: result.id,
-          message: "Register Successfull",
-        })
+    const result = await registerResponse.json();
+    return registerResponse.ok
+      ? responseMessage(true, { user: result.id, message: "Registration Successful" })
       : responseMessage(false, result.message);
   } catch (error) {
     return responseMessage(false, error.message);
   }
 };
 
+/**
+ * Login user
+ * @param {string} url - The database URL
+ * @param {string} email - The user's email
+ * @param {string} password - The user's password
+ * @returns {Promise<{success: boolean, message: string, user?: string}>}
+ */
 export const loginUser = async (url, email, password) => {
   if (!email || !password) {
     return responseMessage(false, "Please enter both email and password");
   }
-  try {
-    const userResponse = await fetch(url);
-    const user = await userResponse.json();
 
-    //check if user exist
-    const userExsit = user.find((u) => u.email === email);
-    if (!userExsit) {
+  try {
+    const response = await fetch(url);
+    const users = await response.json();
+
+    const userExist = users.find((user) => user.email === email);
+    if (!userExist) {
       return responseMessage(false, "User not found");
     }
 
-    //check password
-    const isMatch = userExsit.password === password;
-    if (!isMatch) {
-      //return error
-      return responseMessage(false, "Invalid Credentails");
+    if (userExist.password !== password) {
+      return responseMessage(false, "Invalid Credentials");
     }
 
-    //return user details
-    return responseMessage(true, {
-      user: userExsit.id,
-      message: "Login Successfull",
-    });
+    return responseMessage(true, { user: userExist.id, message: "Login Successful" });
   } catch (error) {
     return responseMessage(false, error.message);
   }

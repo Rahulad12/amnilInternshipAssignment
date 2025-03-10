@@ -39,11 +39,20 @@ The **Employee Management System** is a web application built with **Vite** for 
 ```
 
 ## 🔧 Setup & Installation
-1. **Install Dependencies**
+1. **Clone The Repository**
+   ```sh
+   git clone https://github.com/Rahulad12/amnilInternshipAssignment.git
+   ```
+2. Change the Directory
+   ```sh 
+   cd project 
+   cd employee_management
+   ```
+3. **Install Dependencies**
    ```sh
    npm install
    ```
-2. **Start Backend and Frontend**
+4. **Start Backend and Frontend**
    ```sh
    npm run start
    ```
@@ -61,7 +70,7 @@ The **Employee Management System** is a web application built with **Vite** for 
 - **Backend:** JSON Server, Node.js
 
 # Developer 
-``sh 
+```sh 
 https://adhikarirahul.com.np
-``
+```
 
