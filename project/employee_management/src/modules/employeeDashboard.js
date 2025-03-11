@@ -10,18 +10,11 @@ console.log("User ID from localStorage:", userID);
 
 export const employeeDashboard = async () => {
   // Render sidebar
-  sideBarComponent(
-    `<li><a href="/src/screen/employeeDashboard.html">Dashboard</a></li>`,
-    `<li><a href="#" id="logout">Logout</a></li>`
-  );
+  sideBarComponent();
 
-  // Render employee dashboard content
   try {
-    // Fetch employee details
     const employeeByID = await getEmployeeApi(userID);
-    content.innerHTML = `
-      ${Dashboard(employeeByID)}
-    `;
+    content.innerHTML = Dashboard(employeeByID);
   } catch (error) {
     console.error("Error fetching employee data:", error);
     content.innerHTML = "<p>Failed to load employee dashboard.</p>";

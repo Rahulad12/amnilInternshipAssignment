@@ -1,24 +1,14 @@
 {
   "users": [
     {
-      "id": "1",
-      "email": "rahul@gmail.com",
-      "password": "rahul123"
-    },
-    {
       "id": "eaf1",
+      "email": "rahul@gmail.com",
+      "password": "R@hul123"
+    },
+    {
+      "id": "c155",
       "email": "st.rahul07@gmail.com",
-      "password": "123"
-    },
-    {
-      "id": "254f",
-      "email": "jivan@gmail.com",
-      "password": "jivan123"
-    },
-    {
-      "id": "a6ed",
-      "email": "ram@gmail.com",
-      "password": "ram123"
+      "password": "Rahul@123"
     }
   ],
   "employees": [

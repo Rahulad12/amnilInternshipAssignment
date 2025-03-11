@@ -1,47 +1,55 @@
 import { registerUserApi } from "../api/userApi.js";
-import { createForm } from "../component/Form.js";
+import { authformHelper, resetForm } from "../utils/helper.js";
+import { emailAndPasswordValidator } from "../utils/validator.js";
 
-//if we have token redirect to dashboard
-if(localStorage.getItem("token")){window.location.href = "/src/screen/employeeDashboard.html";}
-
+// Redirect logged-in user to dashboard
+if (localStorage.getItem("token")) {
+  window.location.href = "/src/screen/employeeDashboard.html";
+}
 
 export const userRegister = () => {
-  const { userAuthForm, emailInput, passwordInput, submitButton } =
-    createForm();
-
-  userAuthForm.addEventListener("submit", async (event) => {
+  const { authForm, emailInput, passwordInput, submitButton } =
+    authformHelper();
+  console.log("authForm", authForm);
+  authForm.addEventListener("submit", async (event) => {
     event.preventDefault();
+
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
-    console.log(email, password);
 
-    if (!email || !password) {
-      alert("Please enter both email and password");
+    // Validate email and password
+    const errorMessage = emailAndPasswordValidator(email, password);
+    if (errorMessage) {
+      alert(errorMessage);
+      resetForm(emailInput, passwordInput);
       return;
     }
 
+    // Disable submit button to prevent multiple clicks
     submitButton.disabled = true;
     submitButton.innerText = "Registering...";
 
     try {
       const response = await registerUserApi(email, password);
-      console.log(response);
-      if (response.success) {
-        alert(response.message?.message);
-        localStorage.setItem("token", response?.message.user);
+
+      if (response?.success) {
+        alert(response?.message?.message || "Registration Successful!");
+        localStorage.setItem("token", response?.message?.user);
         window.location.href = "/src/screen/employeeDashboard.html";
       } else {
-        alert(response.message);
+        alert(response?.message || "Registration Failed.");
       }
     } catch (error) {
-      console.error("Error login in", error);
-      alert("Register Failed. please try again");
+      console.error("Error during registration:", error);
+      alert("Registration failed. Please try again.");
     } finally {
-      emailInput.value = "";
-      passwordInput.value = "";
+      // Reset form and button state
+      resetForm(emailInput, passwordInput);
       submitButton.disabled = false;
       submitButton.innerText = "Register";
     }
   });
 };
+
+// Initialize register function
 userRegister();

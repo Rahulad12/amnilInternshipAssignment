@@ -1,5 +1,5 @@
 import { loginUserApi } from "../api/userApi.js";
-import { createForm } from "../component/Form.js";
+import { authformHelper, resetForm } from "../utils/helper.js";
 
 // Redirect logged-in user to dashboard
 if (localStorage.getItem("token")) {
@@ -7,10 +7,10 @@ if (localStorage.getItem("token")) {
 }
 
 export const userLogin = () => {
-  const { userAuthForm, emailInput, passwordInput, submitButton } =
-    createForm();
+  const { authForm, emailInput, passwordInput, submitButton } =
+    authformHelper();
 
-  userAuthForm.addEventListener("submit", async (event) => {
+  authForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     // Validate form fields
@@ -18,7 +18,8 @@ export const userLogin = () => {
     const password = passwordInput.value.trim();
 
     if (!email || !password) {
-      return alert("Please enter both email and password");
+      alert("Please enter both email and password");
+      return;
     }
 
     submitButton.disabled = true;
@@ -26,7 +27,7 @@ export const userLogin = () => {
 
     try {
       const response = await loginUserApi(email, password);
-
+      console.log(response);
       // Check if login was successful
       if (response.success) {
         localStorage.setItem("token", response?.message?.user); // Store token
@@ -39,8 +40,7 @@ export const userLogin = () => {
       console.error("Error logging in:", error);
       alert("Login Failed. Please try again");
     } finally {
-      emailInput.value = "";
-      passwordInput.value = "";
+      resetForm(emailInput, passwordInput);
       submitButton.disabled = false;
       submitButton.innerText = "Login"; // Reset button text
     }
