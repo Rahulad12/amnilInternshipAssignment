@@ -1,6 +1,5 @@
 export const passwordChangeValidator = (...data) => {
   const [oldPassword, newPassword, confirmPassword] = data;
-  console.log(oldPassword, newPassword, confirmPassword);
 
   const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/;
 

@@ -1,4 +1,4 @@
-import "./css/style.css";
+import "./style.css";
 
 if (localStorage.getItem("token"))
   window.location.href = "./src/screen/employeeDashboard.html";

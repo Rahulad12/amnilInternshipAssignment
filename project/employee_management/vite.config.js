@@ -5,12 +5,10 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: "index.html",
-        dashboard: "/src/screen/employeeDashboard.html",
-        setting: "/src/screen/employeeSettingDashboard.html",
         login: "/src/screen/userLogin.html",
         register: "/src/screen/userRegister.html",
-        employeeApi: "/src/api/employeeApi.js",
-        userApi: "/src/api/userApi.js",
+        maindashboard: "/src/screen/employeeDashboard.html",
+        dashboardsetting: "/src/screen/employeeSettingDashboard.html",
       },
     },
   },

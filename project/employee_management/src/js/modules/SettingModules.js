@@ -27,9 +27,6 @@ export const settingDashboard = async () => {
       changePasswordButton,
     } = changePasswordFromHelper();
 
-    console.log("Change Password Form:", changePasswordForm);
-    console.log("Change Password Button:", changePasswordButton);
-
     changePasswordForm.addEventListener("submit", async (event) => {
       event.preventDefault();
 
