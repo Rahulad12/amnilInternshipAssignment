@@ -1,9 +1,16 @@
 import { loginUserApi } from "../api/userApi.js";
-import { authformHelper, resetForm } from "../utils/helper.js";
+import {
+  authformHelper,
+  resetForm,
+  isLoggedIn,
+  errorMessage,
+  passwordErrorMessage,
+  emailErrorMessage,
+} from "../utils/helper.js";
 
 // Redirect logged-in user to dashboard
-if (localStorage.getItem("token")) {
-  window.location.href = "/src/screen/employeeDashboard.html";
+if (isLoggedIn()) {
+  window.location.href = "../screen/employeeDashboard.html";
 }
 
 export const userLogin = () => {
@@ -13,14 +20,27 @@ export const userLogin = () => {
   authForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    // Validate form fields
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
-    if (!email || !password) {
-      alert("Please enter both email and password");
-      return;
+    // Clear previous error messages
+    errorMessage({ message: "", success: true });
+    emailErrorMessage("");
+    passwordErrorMessage("");
+
+    let hasError = false;
+
+    if (!email) {
+      emailErrorMessage("Email is required.");
+      hasError = true;
     }
+
+    if (!password) {
+      passwordErrorMessage("Password is required.");
+      hasError = true;
+    }
+
+    if (hasError) return;
 
     submitButton.disabled = true;
     submitButton.innerText = "Logging in...";
@@ -31,14 +51,26 @@ export const userLogin = () => {
       // Check if login was successful
       if (response.success) {
         localStorage.setItem("token", response?.message?.user); // Store token
-        alert(response?.message?.message || "Login Successful");
-        window.location.href = "/src/screen/employeeDashboard.html"; // Redirect to dashboard
+        errorMessage({
+          success: true,
+          message: response.message.message || "Login Successful",
+        });
+        //Redirect to dashboard after a short delay of 1 second when login is successful
+        setTimeout(() => {
+          window.location.href = "/src/screen/employeeDashboard.html";
+        }, 1000);
       } else {
-        alert(response?.message || "Login failed. Please try again.");
+        errorMessage({
+          success: false,
+          message: response?.message || "Login failed. Please try again.",
+        });
       }
     } catch (error) {
       console.error("Error logging in:", error);
-      alert("Login Failed. Please try again");
+      errorMessage({
+        success: false,
+        message: "An error occurred. Please try again later.",
+      });
     } finally {
       resetForm(emailInput, passwordInput);
       submitButton.disabled = false;

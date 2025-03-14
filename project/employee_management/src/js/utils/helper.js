@@ -39,9 +39,35 @@ const changeEmailHelper = () => {
 
   return { changeEmailForm, newEmailInput, changeEmailButton };
 };
+ const isLoggedIn = () => {
+  return !!localStorage.getItem("token");
+};
+const passwordErrorMessage = (message) => {
+  const errorElement = document.getElementById("password-error-message");
+  errorElement.textContent = message;
+  errorElement.style.color = "red";
+  errorElement.style.display = message ? "block" : "none";
+};
+const emailErrorMessage = (message) => {
+  const errorElement = document.getElementById("email-error-message");
+  errorElement.textContent = message;
+  errorElement.style.color = "red";
+  errorElement.style.display = message ? "block" : "none";
+};
+const errorMessage = (message) => {
+  const errorElement = document.getElementById("error-message");
+  errorElement.textContent = message.message;
+  errorElement.style.color = message.success ? "green" : "red";
+  errorElement.style.display = message.message ? "block" : "none";
+};
+
 export {
   authformHelper,
   resetForm,
   changePasswordFromHelper,
   changeEmailHelper,
+  isLoggedIn,
+  passwordErrorMessage,
+  emailErrorMessage,
+  errorMessage,
 };

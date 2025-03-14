@@ -8,8 +8,13 @@ import { sideBarComponent } from "../component/SideBar.js";
 import {
   changePasswordFromHelper,
   changeEmailHelper,
+  errorMessage,
+  emailErrorMessage,
 } from "../utils/helper.js";
-import { passwordChangeValidator } from "../utils/validator.js";
+import {
+  passwordChangeValidator,
+  handleEmailChangeValidator,
+} from "../utils/validator.js";
 const userID = localStorage.getItem("token"); //getting id from localStorage
 
 export const settingDashboard = async () => {
@@ -34,15 +39,16 @@ export const settingDashboard = async () => {
       const newPassword = newPasswordInput.value.trim();
       const confirmPassword = confirmPasswordInput.value.trim();
 
-      const errorMessage = passwordChangeValidator(
+      const validationError = passwordChangeValidator(
         oldPassword,
         newPassword,
         confirmPassword
       );
-      if (errorMessage) {
-        alert(errorMessage);
+
+      if (validationError) {
         return;
       }
+      errorMessage({ message: "", success: true });
 
       changePasswordButton.disabled = true;
       changePasswordButton.innerText = "Changing...";
@@ -55,13 +61,20 @@ export const settingDashboard = async () => {
         );
 
         if (response?.success) {
-          alert(response?.message?.message || "Password changed successfully!");
-          window.location.href = "/src/screen/employeeDashboard.html";
+          errorMessage({
+            success: true,
+            message:
+              response?.message?.message || "Password changed successfully",
+          });
         } else {
-          alert(response?.message);
+          errorMessage({
+            success: true,
+            message:
+              response?.message?.message || "Password changed successfully",
+          });
         }
       } catch (error) {
-        alert(error.message);
+        errorMessage({ success: false, message: error.message });
         console.error("Error changing password:", error);
       } finally {
         changePasswordButton.disabled = false;
@@ -81,6 +94,13 @@ export const settingDashboard = async () => {
 
       const newEmail = newEmailInput.value.trim();
 
+      emailErrorMessage("");
+
+      const emailValidationError = handleEmailChangeValidator(newEmail);
+
+      if (emailValidationError) {
+        return;
+      }
       changeEmailButton.disabled = true;
       changeEmailButton.innerText = "Changing...";
 
@@ -88,13 +108,14 @@ export const settingDashboard = async () => {
         const response = await updateEmailApi(userID, newEmail);
 
         if (response?.success) {
-          alert(response?.message?.message || "Email changed successfully!");
-          window.location.href = "/src/screen/employeeDashboard.html";
+          emailErrorMessage(
+            response?.message?.message || "Email changed successfully"
+          );
         } else {
-          alert(response?.message);
+          emailErrorMessage(response?.message || "Email already exists");
         }
       } catch (error) {
-        alert(error.message);
+        emailErrorMessage(error.message);
         console.error("Error changing email:", error);
       } finally {
         changeEmailButton.disabled = false;

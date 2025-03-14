@@ -1,31 +1,36 @@
 import { registerUserApi } from "../api/userApi.js";
-import { authformHelper, resetForm } from "../utils/helper.js";
-import { emailAndPasswordValidator } from "../utils/validator.js";
+import {
+  authformHelper,
+  resetForm,
+  errorMessage,
+  isLoggedIn,
+} from "../utils/helper.js";
 
-// Redirect logged-in user to dashboard
-if (localStorage.getItem("token")) {
-  window.location.href = "/src/screen/employeeDashboard.html";
+import { checkEmailPassword } from "../utils/validator.js";
+
+// Redirect if already logged in
+if (isLoggedIn()) {
+  window.location.href = "../screen/employeeDashboard.html";
 }
 
 export const userRegister = () => {
   const { authForm, emailInput, passwordInput, submitButton } =
     authformHelper();
-  console.log("authForm", authForm);
+
   authForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
-    // Validate email and password
-    const errorMessage = emailAndPasswordValidator(email, password);
-    if (errorMessage) {
-      alert(errorMessage);
-      resetForm(emailInput, passwordInput);
+    // Clear previous general error message
+    errorMessage({ message: "", success: true });
+
+    const validationError = checkEmailPassword(password, email); // Check email and password and return the error message here
+    if (validationError) {
       return;
     }
 
-    // Disable submit button to prevent multiple clicks
     submitButton.disabled = true;
     submitButton.innerText = "Registering...";
 
@@ -33,15 +38,26 @@ export const userRegister = () => {
       const response = await registerUserApi(email, password);
 
       if (response?.success) {
-        alert(response?.message?.message || "Registration Successful!");
-        localStorage.setItem("token", response?.message?.user);
-        window.location.href = "/src/screen/employeeDashboard.html";
+        errorMessage({
+          success: true,
+          message: response?.message?.message || "Registration successful",
+        });
+        // Redirect to dashboard
+        setTimeout(() => {
+          window.location.href = "/src/screen/employeeDashboard.html";
+        }, 1000);
       } else {
-        alert(response?.message || "Registration Failed.");
+        errorMessage({
+          success: false,
+          message: response?.message || "Registration failed",
+        });
       }
     } catch (error) {
       console.error("Error during registration:", error);
-      alert("Registration failed. Please try again.");
+      errorMessage({
+        success: false,
+        message: "An error occurred. Please try again later.",
+      });
     } finally {
       // Reset form and button state
       resetForm(emailInput, passwordInput);

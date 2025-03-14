@@ -13,13 +13,16 @@ body {
   align-items: center;
   min-height: 100vh;
 }
+.align-center {
+  text-align: center;
+}
+
 /* Container for Authentication */
 #auth-container {
   background: #ffffff;
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  text-align: center;
   width: 100%;
   max-width: 400px;
 }
@@ -46,7 +49,7 @@ label {
   text-align: left;
   font-weight: bold;
   color: #333;
-  margin-bottom: 5px;
+  margin: 0.5rem 0 0.5rem 0;
   display: block;
 }
 
@@ -76,6 +79,7 @@ input:focus {
   width: 100%;
   padding: 12px;
   border: none;
+  margin-bottom: 0.5rem;
   background-color: #4a90e2;
   color: white;
   font-size: 16px;
