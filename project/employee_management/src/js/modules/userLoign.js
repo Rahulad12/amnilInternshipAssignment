@@ -1,12 +1,10 @@
 import { loginUserApi } from "../api/userApi.js";
+import { authformHelper, resetForm, isLoggedIn } from "../utils/helper.js";
 import {
-  authformHelper,
-  resetForm,
-  isLoggedIn,
   errorMessage,
   passwordErrorMessage,
   emailErrorMessage,
-} from "../utils/helper.js";
+} from "../utils/errorHelper.js";
 
 // Redirect logged-in user to dashboard
 if (isLoggedIn()) {

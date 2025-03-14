@@ -5,12 +5,13 @@ import {
 } from "../api/userApi.js";
 import { protectedRoute } from "../component/ProtectedRoute.js";
 import { sideBarComponent } from "../component/SideBar.js";
+import { errorMessage, changeEmailErrorMessage } from "../utils/errorHelper.js";
 import {
   changePasswordFromHelper,
   changeEmailHelper,
-  errorMessage,
-  emailErrorMessage,
+  resetForm,
 } from "../utils/helper.js";
+
 import {
   passwordChangeValidator,
   handleEmailChangeValidator,
@@ -67,16 +68,18 @@ export const settingDashboard = async () => {
               response?.message?.message || "Password changed successfully",
           });
         } else {
+          console;
           errorMessage({
-            success: true,
-            message:
-              response?.message?.message || "Password changed successfully",
+            success: false,
+            message: response?.message || "Error Changing Password",
           });
         }
       } catch (error) {
+        resetForm(cha);
         errorMessage({ success: false, message: error.message });
         console.error("Error changing password:", error);
       } finally {
+        resetForm(oldPasswordInput, newPasswordInput, confirmPasswordInput);
         changePasswordButton.disabled = false;
         changePasswordButton.innerText = "Change Password";
       }
@@ -94,7 +97,7 @@ export const settingDashboard = async () => {
 
       const newEmail = newEmailInput.value.trim();
 
-      emailErrorMessage("");
+      changeEmailErrorMessage("");
 
       const emailValidationError = handleEmailChangeValidator(newEmail);
 
@@ -108,14 +111,14 @@ export const settingDashboard = async () => {
         const response = await updateEmailApi(userID, newEmail);
 
         if (response?.success) {
-          emailErrorMessage(
+          changeEmailErrorMessage(
             response?.message?.message || "Email changed successfully"
           );
         } else {
-          emailErrorMessage(response?.message || "Email already exists");
+          changeEmailErrorMessage(response?.message || "Email already exists");
         }
       } catch (error) {
-        emailErrorMessage(error.message);
+        changeEmailErrorMessage(error.message);
         console.error("Error changing email:", error);
       } finally {
         changeEmailButton.disabled = false;

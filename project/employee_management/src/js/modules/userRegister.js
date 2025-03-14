@@ -1,10 +1,6 @@
 import { registerUserApi } from "../api/userApi.js";
-import {
-  authformHelper,
-  resetForm,
-  errorMessage,
-  isLoggedIn,
-} from "../utils/helper.js";
+import { errorMessage } from "../utils/errorHelper.js";
+import { authformHelper, resetForm, isLoggedIn } from "../utils/helper.js";
 
 import { checkEmailPassword } from "../utils/validator.js";
 

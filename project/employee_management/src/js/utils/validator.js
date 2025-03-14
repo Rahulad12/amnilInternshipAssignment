@@ -1,9 +1,12 @@
 import {
+  errorMessage,
   emailErrorMessage,
   passwordErrorMessage,
-  errorMessage,
-} from "./helper.js";
-
+  confirmPasswordErrorMessage,
+  newPasswordErrorMessage,
+  oldPasswordErrorMessage,
+  changeEmailErrorMessage,
+} from "./errorHelper.js";
 export const checkEmailPassword = (password, email) => {
   // Clearing previous error messages
   emailErrorMessage("");
@@ -42,10 +45,13 @@ export const checkEmailPassword = (password, email) => {
   return hasError ? "Validation Error" : null;
 };
 
+
 export const passwordChangeValidator = (...data) => {
   const [oldPassword, newPassword, confirmPassword] = data;
 
-  passwordErrorMessage("");
+  oldPasswordErrorMessage("");
+  newPasswordErrorMessage("");
+  confirmPasswordErrorMessage("");
   errorMessage("");
 
   const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$/;
@@ -53,37 +59,31 @@ export const passwordChangeValidator = (...data) => {
   let hasError = false;
 
   if (!oldPassword) {
-    passwordErrorMessage("Old Password is required.");
+    oldPasswordErrorMessage("Old Password is required.");
     hasError = true;
   }
 
   if (!newPassword) {
-    passwordErrorMessage("New Password is required.");
+    newPasswordErrorMessage("New Password is required.");
     hasError = true;
   }
 
   if (!confirmPassword) {
-    passwordErrorMessage("Confirm Password is required.");
+    confirmPasswordErrorMessage("Confirm Password is required.");
     hasError = true;
   }
 
   if (oldPassword === newPassword) {
-    errorMessage({
-      message: "Current password and new password cannot be same",
-      success: true,
-    });
+    newPasswordErrorMessage("New password cannot be same as old password.");
     hasError = true;
   }
   if (newPassword !== confirmPassword) {
-    errorMessage({
-      message: "New password and confirm password do not match",
-      success: true,
-    });
+    confirmPasswordErrorMessage("Passwords do not match.");
     hasError = true;
   }
 
   if (!passwordRegex.test(newPassword)) {
-    passwordErrorMessage(
+    newPasswordErrorMessage(
       "Password should be at least 8 characters long and contain at least one uppercase letter, one number, and one special character."
     );
     hasError = true;
@@ -95,15 +95,15 @@ export const passwordChangeValidator = (...data) => {
 export const handleEmailChangeValidator = (emailInput) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  emailErrorMessage("");
+  changeEmailErrorMessage("");
 
   let hasError = false;
   if (!emailInput) {
-    emailErrorMessage("Email is required.");
+    changeEmailErrorMessage("Email is required.");
     hasError = true;
   }
   if (!emailRegex.test(emailInput)) {
-    emailErrorMessage("Please enter a valid email address.");
+    changeEmailErrorMessage("Please enter a valid email address.");
     hasError = true;
   }
 

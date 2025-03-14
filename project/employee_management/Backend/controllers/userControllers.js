@@ -18,6 +18,7 @@ const changePassword = async (url, userID, newPassword, currentPassword) => {
     if (!user) return responseMessage(false, "User not found");
 
     if (user.password !== currentPassword) {
+      console.log("current password")
       return responseMessage(false, "Current password is incorrect");
     }
 
