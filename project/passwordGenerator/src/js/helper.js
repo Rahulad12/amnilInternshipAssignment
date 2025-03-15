@@ -71,8 +71,7 @@ export const chageFooterYear = () => {
 };
 
 export const measurePasswordStrength = (password) => {
-  const passworStrength = document.getElementById("password-strength");
-  // console.log(password);
+  const passwordStrength = document.getElementById("password-strength");
   password = password.trim();
 
   const length = password.length;
@@ -81,33 +80,31 @@ export const measurePasswordStrength = (password) => {
   const hasNumbers = /[0-9]/.test(password);
   const hasSymbols = /[!@#$%^&*()_+\-=[\]{}|;:,.<>?]/.test(password);
 
-  console.log(length, hasUppercase, hasLowercase, hasNumbers, hasSymbols);
-  if (
-    length >= 12 &&
-    hasUppercase &&
-    hasLowercase &&
-    hasNumbers &&
-    hasSymbols
-  ) {
-    passworStrength.textContent = "Strong";
-    passworStrength.style.color = "green";
-  } else if (
-    length >= 8 &&
-    hasUppercase &&
-    hasLowercase &&
-    hasNumbers &&
-    hasSymbols
-  ) {
-    passworStrength.textContent = "Strong";
-    passworStrength.style.color = "green";
-  } else if (
-    length >= 8 &&
-    (hasUppercase || hasLowercase || hasNumbers || hasSymbols)
-  ) {
-    passworStrength.textContent = "Medium";
-    passworStrength.style.color = "orange";
+  console.log(hasUppercase, hasLowercase, hasNumbers, hasSymbols);
+
+  // Count the number of character types present
+  const characterTypesCount = [
+    hasUppercase,
+    hasLowercase,
+    hasNumbers,
+    hasSymbols,
+  ].filter(Boolean).length;
+
+  // Determine password strength
+  if (length >= 12 && characterTypesCount === 4) {
+    passwordStrength.textContent = "Very Strong";
+    passwordStrength.style.color = "green";
+  } else if (length >= 8 && characterTypesCount >= 3) {
+    passwordStrength.textContent = "Strong";
+    passwordStrength.style.color = "green";
+  } else if (length >= 8 && characterTypesCount >= 2) {
+    passwordStrength.textContent = "Medium";
+    passwordStrength.style.color = "orange";
+  } else if (length >= 6 && characterTypesCount >= 2) {
+    passwordStrength.textContent = "Average";
+    passwordStrength.style.color = "grey";
   } else {
-    passworStrength.textContent = "Weak";
-    passworStrength.style.color = "red";
+    passwordStrength.textContent = "Weak";
+    passwordStrength.style.color = "red";
   }
 };
