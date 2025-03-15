@@ -1,13 +1,96 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <title>Password Generator</title>
   </head>
   <body>
-    <div id="app"></div>
+    <header>
+      <div class="hero">
+        <div id="logo">
+          <img src="/headerLogo.png" alt="logo" class="logo-image" />
+        </div>
+        <h1 class="hero-head">Secure Password Generator</h1>
+        <p class="hero-paragraph">
+          Create strong, unique passwords with our advanced generator. Customize
+          your password with various options to meet your security needs.
+        </p>
+      </div>
+    </header>
+    <main>
+      <section>
+        <div class="container">
+          <div class="card">
+            <div class="card-header">
+              <input
+                type="text"
+                id="password"
+                readonly
+                placeholder="Your generated password"
+              />
+              <i class="bi bi-clipboard" id="copy-password"></i>
+              <i class="bi bi-arrow-clockwise" id="refresh-password"></i>
+            </div>
+            <div class="card-body">
+              <div class="card-controls">
+                <label for="password-length" style="text-align: left"
+                  >Length: <span id="password-length-value">12</span></label
+                >
+                <input
+                  type="range"
+                  id="password-length"
+                  name="password-length"
+                  min="8"
+                  max="32"
+                  value="12"
+                  class="slider"
+                />
+              </div>
+
+              <div class="card-checkbox">
+                <input type="checkbox" id="uppercase" checked />
+                <label for="uppercase">Uppercase</label>
+
+                <input type="checkbox" id="lowercase" checked />
+                <label for="lowercase">Lowercase</label>
+
+                <input type="checkbox" id="numbers" checked />
+                <label for="numbers">Numbers</label>
+
+                <input type="checkbox" id="symbols" checked />
+                <label for="symbols">Symbols</label>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <h5>Password Strength:</h5>
+              <p id="password-strength" class="password-strength"></p>
+            </div>
+            <!-- Close .card-body -->
+          </div>
+          <!-- Close .card -->
+        </div>
+        <!-- Close .container -->
+      </section>
+    </main>
+    <footer class="footer">
+      <p>
+        &copy; <span id="year"></span> Password Generator. All rights reserved.
+      </p>
+      <p>
+        Created by
+        <a href="https://adhikarirahil.com.np" target="_blank"
+          >Rahul Adhikari</a
+        >
+      </p>
+    </footer>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

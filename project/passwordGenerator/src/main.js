@@ -1,24 +1,20 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import { generatePassword } from "./js/controllers/generatePassword.js";
+import { getElements, copyToClipboard, refreshPassword,chageFooterYear } from "./js/helper.js";
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+const app = () => {
+  const { passwordLength, uppercase, lowercase, numbers, symbols } =
+    getElements();
 
-setupCounter(document.querySelector('#counter'))
+  generatePassword(); //calling generatePassword function it will invoke when the page is loaded
+
+  passwordLength.addEventListener("input", generatePassword); //calling generatePassword function it will invoke when the password length is changed
+  uppercase.addEventListener("change", generatePassword); //calling generatePassword function it will invoke when the uppercase checkbox is checked
+  lowercase.addEventListener("change", generatePassword); //calling generatePassword function it will invoke when the lowercase checkbox is checked
+  numbers.addEventListener("change", generatePassword); //calling generatePassword function it will invoke when the numbers checkbox is checked
+  symbols.addEventListener("change", generatePassword); //calling generatePassword function it will invoke when the symbols checkbox is checked
+
+  copyToClipboard();
+  refreshPassword();
+  chageFooterYear();
+};
+app();
