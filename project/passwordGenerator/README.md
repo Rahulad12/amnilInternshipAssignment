@@ -25,6 +25,8 @@ Ensure you have a modern web browser installed.
 2. Navigate to the project directory:
    ```sh
    cd project
+   ```
+   ```sh
    cd passwordGenerator
    ```
 3. Install The Package
