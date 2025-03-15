@@ -1,3 +1,4 @@
+/* Global Styles */
 body {
   font-family: Arial, sans-serif;
   background: linear-gradient(to bottom right, #4c1d95, #6b21a8, #db2777);
@@ -11,10 +12,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* overflow: hidden; */
-  /* border: 2px solid red; */
 }
 
+/* Hero Section */
 .hero {
   text-align: center;
   padding: 2rem;
@@ -28,7 +28,6 @@ body {
 
 .logo-image {
   width: 80px;
-  height: auto;
 }
 
 .hero-head {
@@ -46,6 +45,7 @@ body {
   margin: 0 auto;
 }
 
+/* Card & Container */
 .container {
   display: flex;
   justify-content: center;
@@ -53,7 +53,6 @@ body {
   width: 100%;
   height: 330px;
   padding: 1rem;
-  /* border: 2px solid red; */
 }
 
 .card {
@@ -68,6 +67,7 @@ body {
 }
 
 .card-header {
+  position: relative;
   margin-bottom: 1rem;
 }
 
@@ -82,61 +82,59 @@ body {
   font-size: 1.2rem;
   border: none;
 }
-#copy-password {
+
+/* Icons */
+#copy-password,
+#refresh-password {
   position: absolute;
-  top: 60px;
-  right: 60px;
-  cursor: pointer;
-  color: #fff;
+  top: 30px;
   font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
   transition: color 0.3s ease-in-out;
 }
 
-#copy-password:hover {
-  color: #ec4899;
+#copy-password {
+  right: 60px;
 }
 
 #refresh-password {
-  position: absolute;
-  top: 60px;
   right: 30px;
-  cursor: pointer;
-  color: #fff;
-  font-size: 1rem;
-  transition: color 0.3s ease-in-out;
 }
 
+#copy-password:hover,
 #refresh-password:hover {
   color: #ec4899;
 }
+
+/* Controls */
 .card-controls {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
-/* Default styles for the range slider */
+/* Range Slider */
 .slider {
   -webkit-appearance: none;
-  margin: 8px;
   width: 100%;
   height: 10px;
+  margin: 8px;
   background: linear-gradient(to right, #818cf8, #ec4899);
   border-radius: 5px;
   outline: none;
   opacity: 0.9;
-  transition: 0.2s;
+  transition: opacity 0.2s;
 }
 
-/* Change background on hover */
 .slider:hover {
   opacity: 1;
 }
 
-/* Customizing the slider thumb (circle) */
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
+/* Slider Thumb Customization */
+.slider::-webkit-slider-thumb,
+.slider::-moz-range-thumb,
+.slider::-ms-thumb {
   appearance: none;
   width: 20px;
   height: 20px;
@@ -147,37 +145,13 @@ body {
   transition: 0.2s;
 }
 
-.slider::-webkit-slider-thumb:hover {
-  background: #ec4899;
-  border-color: #fff;
-}
-
-/* For Firefox */
-.slider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  background: #fff;
-  border: 2px solid #ec4899;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
+.slider::-webkit-slider-thumb:hover,
 .slider::-moz-range-thumb:hover {
   background: #ec4899;
   border-color: #fff;
 }
 
-/* For Microsoft Edge */
-.slider::-ms-thumb {
-  width: 20px;
-  height: 20px;
-  background: #fff;
-  border: 2px solid #ec4899;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
+/* Checkbox Section */
 .card-checkbox {
   display: flex;
   flex-wrap: wrap;
@@ -194,24 +168,30 @@ body {
 .card-checkbox label {
   font-size: 1rem;
 }
+
+/* Password Strength Indicator */
 .card-footer {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .card-footer h5 {
   font-size: 1rem;
   margin-left: 8px;
 }
-.card-footer .password-strength{
+
+.password-strength {
   font-size: 1rem;
-  margin-left: 8px;
   width: 100px;
   text-align: center;
   padding: 3px;
   border-radius: 6px;
   background-color: white;
+  margin-left: 8px;
 }
+
+/* Footer */
 .footer {
   width: 100%;
   text-align: center;
@@ -237,6 +217,8 @@ body {
 .footer a:hover {
   color: #818cf8;
 }
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .hero-head {
     font-size: 2.5rem;
