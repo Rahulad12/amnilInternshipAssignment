@@ -28,11 +28,6 @@ export const generatePassword = () => {
   if (numbers.checked) chars += numberChars;
   if (symbols.checked) chars += symbolChars;
 
-  console.log(chars);
-  console.log(uppercase.checked);
-  console.log(lowercase.checked);
-  console.log(numbers.checked);
-  console.log(symbols.checked);
   // If no character type is selected, prevent password generation
   if (chars.length === 0) {
     password.value = "Select at least one option!";

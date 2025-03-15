@@ -1,5 +1,10 @@
 import { generatePassword } from "./js/controllers/generatePassword.js";
-import { getElements, copyToClipboard, refreshPassword,chageFooterYear } from "./js/helper.js";
+import {
+  getElements,
+  copyToClipboard,
+  refreshPassword,
+  chageFooterYear,
+} from "./js/helper.js";
 
 const app = () => {
   const { passwordLength, uppercase, lowercase, numbers, symbols } =
