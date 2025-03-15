@@ -199,8 +199,8 @@ body {
   background-color: rgb(35, 27, 27);
   color: #d1d5db;
   font-size: 0.9rem;
-  position: fixed;  
-  bottom: 0; 
+  /* position: fixed;   */
+  /* bottom: 0;  */
 }
 
 .footer p {
