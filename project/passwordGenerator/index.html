@@ -13,7 +13,7 @@
   <body>
     <header>
       <div class="hero">
-        <div id="logo">
+        <div class="logo">
           <img src="/headerLogo.png" alt="logo" class="logo-image" />
         </div>
         <h1 class="hero-head">Secure Password Generator</h1>
@@ -34,9 +34,11 @@
                 readonly
                 placeholder="Your generated password"
               />
-              <i class="bi bi-clipboard" id="copy-password"></i>
               <i class="bi bi-arrow-clockwise" id="refresh-password"></i>
+              <i class="bi bi-clipboard" id="copy-password"></i>
+              <span id="copied-message"></span>
             </div>
+
             <div class="card-body">
               <div class="card-controls">
                 <label for="password-length" style="text-align: left"
@@ -52,26 +54,53 @@
                   class="slider"
                 />
               </div>
+              <div
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+              >
+                <div class="card-checkbox">
+                  <div class="uppercase-checkbox">
+                    <input
+                      type="checkbox"
+                      id="uppercase"
+                      checked
+                      class="option-checkbox"
+                    />
+                    <label for="uppercase">Uppercase</label>
+                  </div>
 
-              <div class="card-checkbox">
-                <div class="uppercase-checkbox">
-                  <input type="checkbox" id="uppercase" checked />
-                  <label for="uppercase">Uppercase</label>
-                </div>
+                  <div class="lowercase-checkbox">
+                    <input
+                      type="checkbox"
+                      id="lowercase"
+                      checked
+                      class="option-checkbox"
+                    />
+                    <label for="lowercase">Lowercase</label>
+                  </div>
 
-                <div class="lowercase-checkbox">
-                  <input type="checkbox" id="lowercase" checked />
-                  <label for="lowercase">Lowercase</label>
-                </div>
+                  <div class="number-checkbox">
+                    <input
+                      type="checkbox"
+                      id="numbers"
+                      checked
+                      class="option-checkbox"
+                    />
+                    <label for="numbers">Numbers</label>
+                  </div>
 
-                <div class="number-checkbox">
-                  <input type="checkbox" id="numbers" checked />
-                  <label for="numbers">Numbers</label>
-                </div>
-
-                <div class="symbols-checkbox">
-                  <input type="checkbox" id="symbols" checked />
-                  <label for="symbols">Symbols</label>
+                  <div class="symbols-checkbox">
+                    <input
+                      type="checkbox"
+                      id="symbols"
+                      checked
+                      class="option-checkbox"
+                    />
+                    <label for="symbols">Symbols</label>
+                  </div>
                 </div>
               </div>
             </div>

@@ -89,6 +89,7 @@ export const measurePasswordStrength = (password) => {
     hasNumbers,
     hasSymbols,
   ].filter(Boolean).length;
+  console.log(characterTypesCount)
 
   // Determine password strength
   if (length >= 12 && characterTypesCount === 4) {
