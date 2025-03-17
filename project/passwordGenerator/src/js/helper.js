@@ -42,7 +42,9 @@ export const copyToClipboard = () => {
         .then(() => {
           copyButton.textContent = "Copied!";
           setTimeout(() => {
-            copyButton.textContent = "";
+            copyButton.innerHTML = `
+            <span><i class="bi bi-clipboard"></i> Copy</span>
+            `;
           }, 1000);
         })
         .catch(() => {
@@ -89,7 +91,7 @@ export const measurePasswordStrength = (password) => {
     hasNumbers,
     hasSymbols,
   ].filter(Boolean).length;
-  console.log(characterTypesCount)
+  console.log(characterTypesCount);
 
   // Determine password strength
   if (length >= 12 && characterTypesCount === 4) {

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/src/style.css" />
     <link
       rel="stylesheet"
@@ -25,94 +26,96 @@
     </header>
     <main>
       <section>
-        <div class="container">
-          <div class="card">
-            <div class="card-header">
-              <input
-                type="text"
-                id="password"
-                readonly
-                placeholder="Your generated password"
-              />
-              <i class="bi bi-arrow-clockwise" id="refresh-password"></i>
-              <i class="bi bi-clipboard" id="copy-password"></i>
+        <div class="card">
+          <div class="card-header">
+            <input
+              type="text"
+              id="password"
+              readonly
+              placeholder="Your generated password"
+            />
+            <span
+              ><i class="bi bi-arrow-clockwise" id="refresh-password"></i>
+            </span>
+            <div class="copy-button" id="copy-password">
+              <span><i class="bi bi-clipboard"></i> Copy</span>
               <span id="copied-message"></span>
             </div>
+          </div>
 
-            <div class="card-body">
-              <div class="card-controls">
-                <label for="password-length" style="text-align: left"
-                  >Length: <span id="password-length-value">12</span></label
-                >
-                <input
-                  type="range"
-                  id="password-length"
-                  name="password-length"
-                  min="6"
-                  max="26"
-                  value="8"
-                  class="slider"
-                />
-              </div>
-              <div
-                style="
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                "
+          <div class="card-body">
+            <div class="card-controls">
+              <label for="password-length" style="text-align: left"
+                >Length: <span id="password-length-value">12</span></label
               >
-                <div class="card-checkbox">
-                  <div class="uppercase-checkbox">
-                    <input
-                      type="checkbox"
-                      id="uppercase"
-                      checked
-                      class="option-checkbox"
-                    />
-                    <label for="uppercase">Uppercase</label>
-                  </div>
+              <input
+                type="range"
+                id="password-length"
+                name="password-length"
+                min="6"
+                max="26"
+                value="8"
+                class="slider"
+              />
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              "
+            >
+              <div class="card-checkbox">
+                <div class="uppercase-checkbox">
+                  <input
+                    type="checkbox"
+                    id="uppercase"
+                    checked
+                    class="option-checkbox"
+                  />
+                  <label for="uppercase">Uppercase</label>
+                </div>
 
-                  <div class="lowercase-checkbox">
-                    <input
-                      type="checkbox"
-                      id="lowercase"
-                      checked
-                      class="option-checkbox"
-                    />
-                    <label for="lowercase">Lowercase</label>
-                  </div>
+                <div class="lowercase-checkbox">
+                  <input
+                    type="checkbox"
+                    id="lowercase"
+                    checked
+                    class="option-checkbox"
+                  />
+                  <label for="lowercase">Lowercase</label>
+                </div>
 
-                  <div class="number-checkbox">
-                    <input
-                      type="checkbox"
-                      id="numbers"
-                      checked
-                      class="option-checkbox"
-                    />
-                    <label for="numbers">Numbers</label>
-                  </div>
+                <div class="number-checkbox">
+                  <input
+                    type="checkbox"
+                    id="numbers"
+                    checked
+                    class="option-checkbox"
+                  />
+                  <label for="numbers">Numbers</label>
+                </div>
 
-                  <div class="symbols-checkbox">
-                    <input
-                      type="checkbox"
-                      id="symbols"
-                      checked
-                      class="option-checkbox"
-                    />
-                    <label for="symbols">Symbols</label>
-                  </div>
+                <div class="symbols-checkbox">
+                  <input
+                    type="checkbox"
+                    id="symbols"
+                    checked
+                    class="option-checkbox"
+                  />
+                  <label for="symbols">Symbols</label>
                 </div>
               </div>
             </div>
-
-            <div class="card-footer">
-              <h5>Password Strength:</h5>
-              <p id="password-strength" class="password-strength"></p>
-            </div>
-            <!-- Close .card-body -->
           </div>
-          <!-- Close .card -->
+
+          <div class="card-footer">
+            <span>Password Strength:</span>
+            <p id="password-strength" class="password-strength"></p>
+          </div>
+          <!-- Close .card-body -->
         </div>
+
         <!-- Close .container -->
       </section>
     </main>
