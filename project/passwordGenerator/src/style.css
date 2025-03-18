@@ -58,9 +58,8 @@ input[type="checkbox"]:checked:before {
   /* border: 2px solid red; */
   margin: 0.5rem 0 10px 0;
 }
-.logo-image {
-  width: 8em;
-  height: 8em;
+.bi-shield-check {
+  font-size: 6em;
 }
 .hero .hero-head {
   font-size: 4rem;
@@ -84,7 +83,7 @@ section {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 0 0 1rem 0;
+  margin: 1rem 0 1rem 0;
 }
 .card {
   /* border: 2px solid white; */
@@ -168,7 +167,7 @@ section {
   align-items: center;
   background-color: rgb(221, 241, 240);
   padding: 8px;
-  height: 3em;
+  height: em;
   border-radius: 12em;
   color: rgb(103, 96, 103);
   font-weight: bold;
