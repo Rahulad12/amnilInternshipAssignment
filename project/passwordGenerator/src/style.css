@@ -174,6 +174,38 @@ section {
   color: rgb(218, 134, 223);
 }
 
+@media only screen and (min-width: 1441px) {
+  .card .card-body .card-controls label {
+    font-size: 2rem;
+  }
+  .card .card-body .card-checkbox label {
+    font-size: 2rem;
+  }
+
+  .card .card-footer span {
+    font-size: 2rem;
+  }
+  .card .card-footer #password-strength {
+    padding: 0.5rem;
+    font-size: 2rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .hero .logo .logo-image {
+    height: 6em;
+    width: 6em;
+  }
+  .hero .hero-head {
+    font-size: 3.5rem;
+  }
+  .hero .hero-paragraph {
+    font-size: 1.75rem;
+  }
+  .card .card-header #password {
+    height: 50px;
+  }
+}
+
 /*responsive*/
 @media only screen and (max-width: 768px) {
   .hero .logo .logo-image {
@@ -284,6 +316,15 @@ section {
   .card .card-header #password {
     font-size: 1rem;
     text-align: start;
-    padding: 2rem;
+    padding: 0.5rem;
+  }
+  .card .copy-button {
+    width: 8em;
+    margin: 0 !important;
+  }
+}
+@media only screen and (max-width: 309px) {
+  .card .card-header #password {
+    font-size: 10px;
   }
 }

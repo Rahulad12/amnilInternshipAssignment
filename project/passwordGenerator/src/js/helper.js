@@ -1,3 +1,4 @@
+"use strict"
 import { generatePassword } from "./controllers/generatePassword.js";
 
 export const getElements = () => {
