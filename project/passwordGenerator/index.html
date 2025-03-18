@@ -45,9 +45,17 @@
 
           <div class="card-body">
             <div class="card-controls">
-              <label for="password-length" style="text-align: left"
-                >Length: <span id="password-length-value">12</span></label
-              >
+              <div class="card-controls-title">
+                <label for="password-length" class="card-controls-value"
+                  >Length: <span id="password-length-value">12</span></label
+                >
+
+                <div class="password-strength-box">
+                  <span>Password Strength:</span>
+                  <span id="password-strength" class="password-strength"></span>
+                </div>
+              </div>
+
               <input
                 type="range"
                 id="password-length"
@@ -66,7 +74,7 @@
               "
             >
               <div class="card-checkbox">
-                <div class="uppercase-checkbox">
+                <div class="uppercase-checkbox check-box">
                   <input
                     type="checkbox"
                     id="uppercase"
@@ -76,7 +84,7 @@
                   <label for="uppercase">Uppercase</label>
                 </div>
 
-                <div class="lowercase-checkbox">
+                <div class="lowercase-checkbox check-box">
                   <input
                     type="checkbox"
                     id="lowercase"
@@ -86,7 +94,7 @@
                   <label for="lowercase">Lowercase</label>
                 </div>
 
-                <div class="number-checkbox">
+                <div class="number-checkbox check-box">
                   <input
                     type="checkbox"
                     id="numbers"
@@ -96,7 +104,7 @@
                   <label for="numbers">Numbers</label>
                 </div>
 
-                <div class="symbols-checkbox">
+                <div class="symbols-checkbox check-box">
                   <input
                     type="checkbox"
                     id="symbols"
@@ -109,10 +117,6 @@
             </div>
           </div>
 
-          <div class="card-footer">
-            <span>Password Strength:</span>
-            <p id="password-strength" class="password-strength"></p>
-          </div>
           <!-- Close .card-body -->
         </div>
 
